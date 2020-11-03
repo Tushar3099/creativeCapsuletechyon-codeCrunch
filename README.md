@@ -4,8 +4,8 @@
 ## Team Details
 Team Name : code_freaks
 
-Team Member 1: Shweta chaurasia :shweta3047@gmail.com : 8858197044
-Team Member 2: Tushar guha neogi : tusharneogi30@gmail.com : 8960458060
+* Team Member 1: Shweta chaurasia :shweta3047@gmail.com : 8858197044
+* Team Member 2: Tushar guha neogi : tusharneogi30@gmail.com : 8960458060
 
 ## Project Details
 Hosted URL:  https://codecrunch.herokuapp.com/

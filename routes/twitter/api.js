@@ -43,19 +43,45 @@ router.get("/hashtag/:hashtag", async (req, res) => {
         tweets = [
           ...tweets,
           {
-            created_at: item.created_at,
             text: item.text,
+            user_screen_name: item.user.screen_name,
+            retweet_count: item.retweet_count,
           },
         ];
       });
 
-      res.send({
-        user_name: data[0].user.name,
-        user_screen_name: data[0].user.screen_name,
-        followers_count: data[0].user.followers_count,
-        friends_count: data[0].user.friends_count,
-        tweets: tweets,
+      res.send(tweets);
+      //   res.send(data);
+    } else {
+      throw { status: 404, message: "tweets not found" };
+    }
+  } catch (error) {
+    res.send({
+      status: error.status || 404,
+      message: error.message || "tweets not found",
+    });
+  }
+});
+router.get("/location", async (req, res) => {
+  try {
+    const { latitude, longitude, radius } = req.query;
+    const data = await twitterService.tweetHashTag({
+      geocode: `${latitude},${longitude},${radius}`,
+    });
+    if (data != "") {
+      let tweets = [];
+      data.forEach((item) => {
+        tweets = [
+          ...tweets,
+          {
+            text: item.text,
+            user_screen_name: item.user.screen_name,
+          },
+        ];
       });
+
+      //   res.send(tweets);
+      res.send(tweets);
     } else {
       throw { status: 404, message: "tweets not found" };
     }

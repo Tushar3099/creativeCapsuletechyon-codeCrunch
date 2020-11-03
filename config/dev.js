@@ -3,4 +3,6 @@ module.exports = {
   // JWT_SECRET:""
   WEATHER_BASE_URL: "https://api.openweathermap.org/data/2.5/weather",
   WEATHER_API_KEY: "07e6c2c478ee3db9aec071f64bfb3c06",
+  TWITTER_BEARER_TOKEN:
+    "AAAAAAAAAAAAAAAAAAAAAJJiJQEAAAAAL4F8I5YrPMQDOxOEZMOiPrjNyv0%3D8NQAwFNLAyZ8BNKw70odSZ5U3u9PmucFiEU8nd5LxcfVeeBE8W",
 };

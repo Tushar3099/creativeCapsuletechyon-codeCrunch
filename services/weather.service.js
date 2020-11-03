@@ -1,0 +1,1 @@
+const weatherservice = class WeatherService {};

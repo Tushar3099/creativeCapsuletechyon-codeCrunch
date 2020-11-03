@@ -17,7 +17,7 @@ Team Name : code_freaks
 * Task 2: DONE
 * Task 3: DONE
 * Task 4: DONE
-* Task 5: NEW/IN-PROGRESS/DONE
+* Task 5: DONE
 * Task 6: NEW/IN-PROGRESS/DONE
 * Task 7: DONE
 * Task 8: DONE

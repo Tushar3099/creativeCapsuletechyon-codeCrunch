@@ -17,9 +17,9 @@ router.get("/covid/country/name/:country_name",async(req,res)=>{
       }
    })
  .then(function (response) {
-     if(!response.data)
+     if(!response.data[0])
      {
-         return  res.status(404).json({error:"Record not found"})
+        return  res.status(404).json({status:"404",message:"Record not found"})
      }
  else{
     // console.log(JSON.stringify(response.data));
@@ -56,9 +56,9 @@ router.get("/covid/country/name/:country_name",async(req,res)=>{
       }
    })
  .then(function (response) {
-     if(!response.data)
+     if(!response.data[0])
      {
-         return  res.status(404).json({error:"Record not found"})
+        return  res.status(404).json({status:"404",message:"Record not found"})
      }
  else{
     // console.log(JSON.stringify(response.data));
@@ -119,6 +119,10 @@ router.get("/covid/country/name/:country_name",async(req,res)=>{
                   "Content-Type":"application/json",
               }
            })
+           if(!response2.data[0])
+           {
+            return  res.status(404).json({status:"404",message:"Record not found"})
+           }
            if(response2.data){
             return res.json({country:response2.data[0].country,
                 confirmed:response2.data[0].confirmed,
@@ -128,6 +132,7 @@ router.get("/covid/country/name/:country_name",async(req,res)=>{
                 deaths:response2.data[0].deaths
               })
            }
+           
         }catch(error){
             console.log(error);
     // if(error.response.status==404)

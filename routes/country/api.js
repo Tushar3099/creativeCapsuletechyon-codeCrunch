@@ -13,9 +13,9 @@ router.get("/country/name/:country_name",async(req,res)=>{
      }
   })
 .then(function (response) {
-    if(!response.data)
+    if(!response.data[0])
     {
-        return  res.status(404).json({error:"Record not found"})
+        return  res.status(404).json({status:"404",message:"Record not found"})
     }
 //   console.log(JSON.stringify(response.data));
 else{
@@ -55,7 +55,7 @@ router.get("/country/code/:country_code",async(req,res)=>{
  .then(function (response) {
      if(!response.data)
      {
-         return  res.status(404).json({error:"Record not found"})
+        return  res.status(404).json({status:"404",message:"Record not found"})
      }
    
  else{

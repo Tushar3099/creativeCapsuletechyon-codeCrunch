@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 
-const country = require("./routes/country/api");
+const country=require('./routes/country/api')
+const covid19=require('./routes/covid19/api')
 const weather = require("./routes/weather/api");
 const twitter = require("./routes/twitter/api");
 
@@ -12,7 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
 
-app.use(country);
+app.use(country)
+app.use(covid19)
 app.use("/weather", weather);
 app.use("/twitter", twitter);
 

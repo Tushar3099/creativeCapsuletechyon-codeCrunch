@@ -9,7 +9,7 @@ Team Name : code_freaks
 
 ## Project Details
 * Hosted URL:  https://codecrunch.herokuapp.com/
-* Tech Stack used: NodeJS 
+* Tech Stack used: NodeJS, ExpressJS
 
 
 ## Tasks Status:

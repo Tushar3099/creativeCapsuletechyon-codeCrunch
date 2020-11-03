@@ -8,8 +8,8 @@ Team Name : code_freaks
 * Team Member 2: Tushar guha neogi : tusharneogi30@gmail.com : 8960458060
 
 ## Project Details
-Hosted URL:  https://codecrunch.herokuapp.com/
-Tech Stack used: NodeJS 
+* Hosted URL:  https://codecrunch.herokuapp.com/
+* Tech Stack used: NodeJS 
 
 
 ## Tasks Status:

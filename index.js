@@ -1,20 +1,23 @@
-const express =require('express');
-const app=express();
-const bodyParser=require('body-parser');
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
 
 const country=require('./routes/country/api')
 const covid19=require('./routes/covid19/api')
+const country = require("./routes/country/api");
+const weather = require("./routes/weather/api");
 
-const PORT=process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
-
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
 
 app.use(country)
 app.use(covid19)
+app.use(country);
+app.use("/weather", weather);
 
-app.listen(PORT,()=>{
-    console.log("Server is listening!! "+PORT)
-})
+app.listen(PORT, () => {
+  console.log("Server is listening!! " + PORT);
+});

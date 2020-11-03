@@ -34,10 +34,10 @@ else{
 })
 .catch(function (error) {
 //    console.log(error);
-   if(error.response.status==404)
-   return  res.status(404).json({error:"Record not found"})
-   else
-    return res.status(400).json({error:"Bad request"})
+if(error.response.status==404)
+return  res.status(404).json({status:"404",message:"Record not found"})
+else
+ return res.status(400).json({status:"400",message:"Bad request"})
 });
     
 })
@@ -77,9 +77,9 @@ router.get("/country/code/:country_code",async(req,res)=>{
  .catch(function (error) {
     // console.log(error);
     if(error.response.status==404)
-    return  res.status(404).json({error:"Record not found"})
+    return  res.status(404).json({status:"404",message:"Record not found"})
     else
-     return res.status(400).json({error:"Bad request"})
+     return res.status(400).json({status:"400",message:"Bad request"})
  });
      
  })
@@ -187,9 +187,9 @@ router.get('/country/search',async(req,res)=>{
                 }catch(error){
                     // console.log(error);
                     if(error.response.status==404)
-                    return  res.status(404).json({error:"Record not found"})
+                    return  res.status(404).json({status:"404",message:"Record not found"})
                     else
-                    return res.status(400).json({error:"Bad request"})
+                     return res.status(400).json({status:"400",message:"Bad request"})
                 }
             }
         }

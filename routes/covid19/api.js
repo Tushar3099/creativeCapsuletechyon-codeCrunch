@@ -17,21 +17,6 @@ router.get("/covid/country/name/:country_name", async (req, res) => {
     },
   })
     .then(function (response) {
-      if (!response.data) {
-        return res.status(404).json({ error: "Record not found" });
-      } else {
-        // console.log(JSON.stringify(response.data));
-        return res.json({
-          country: response.data[0].country,
-          confirmed: response.data[0].confirmed,
-          recovered: response.data[0].recovered,
-          capital: response.data[0].capital,
-          critical: response.data[0].critical,
-          deaths: response.data[0].deaths,
-        });
-      }
-    })
-    .then(function (response) {
       if (!response.data[0]) {
         return res
           .status(404)
@@ -69,21 +54,6 @@ router.get("/covid/country/code/:country_code", async (req, res) => {
       "Content-Type": "application/json",
     },
   })
-    .then(function (response) {
-      if (!response.data) {
-        return res.status(404).json({ error: "Record not found" });
-      } else {
-        // console.log(JSON.stringify(response.data));
-        return res.json({
-          country: response.data[0].country,
-          confirmed: response.data[0].confirmed,
-          recovered: response.data[0].recovered,
-          capital: response.data[0].capital,
-          critical: response.data[0].critical,
-          deaths: response.data[0].deaths,
-        });
-      }
-    })
     .then(function (response) {
       if (!response.data[0]) {
         return res

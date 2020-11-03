@@ -18,6 +18,10 @@ app.use(covid19)
 app.use("/weather", weather);
 app.use("/twitter", twitter);
 
+app.get('/',(req,res)=>{
+    res.send("Hello!! Team 'Shweta' and 'Tushar' here. ")
+})
+
 app.listen(PORT, () => {
   console.log("Server is listening!! " + PORT);
 });

@@ -38,7 +38,7 @@ router.get("/covid/country/name/:country_name",async(req,res)=>{
     // if(error.response.status==404)
     // return  res.status(404).json({error:"Record not found"})
     // else
-     return res.status(400).json({staus:"400",message:"Bad request"})
+    //  return res.status(400).json({error:"Bad request"})
  });
      
  })
@@ -77,8 +77,7 @@ router.get("/covid/country/name/:country_name",async(req,res)=>{
     // if(error.response.status==404)
     // return  res.status(404).json({error:"Record not found"})
     // else
-    return res.status(400).json({staus:"400",message:"Bad request"})
-
+    //  return res.status(400).json({error:"Bad request"})
  });
      
  })
@@ -139,7 +138,7 @@ router.get("/covid/country/name/:country_name",async(req,res)=>{
     // if(error.response.status==404)
     // return  res.status(404).json({error:"Record not found"})
     // else
-    return res.status(400).json({staus:"400",message:"Bad request"})
+    //  return res.status(400).json({error:"Bad request"})
         }
     }
  })

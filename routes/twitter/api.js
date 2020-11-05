@@ -65,25 +65,29 @@ router.get("/hashtag/:hashtag", async (req, res) => {
 router.get("/location", async (req, res) => {
   try {
     const { latitude, longitude, radius } = req.query;
-    const data = await twitterService.tweetHashTag({
-      geocode: `${latitude},${longitude},${radius}`,
-    });
-    if (data != "") {
-      let tweets = [];
-      data.forEach((item) => {
-        tweets = [
-          ...tweets,
-          {
-            text: item.text,
-            user_screen_name: item.user.screen_name,
-          },
-        ];
+    if (latitude && longitude && radius) {
+      const data = await twitterService.tweetHashTag({
+        geocode: `${latitude},${longitude},${radius}`,
       });
+      if (data != "") {
+        let tweets = [];
+        data.forEach((item) => {
+          tweets = [
+            ...tweets,
+            {
+              text: item.text,
+              user_screen_name: item.user.screen_name,
+            },
+          ];
+        });
 
-      //   res.send(tweets);
-      res.send(tweets);
+        //   res.send(tweets);
+        res.send(tweets);
+      } else {
+        throw { status: 404, message: "tweets not found" };
+      }
     } else {
-      throw { status: 404, message: "tweets not found" };
+      throw { status: 400, message: "Bad Request" };
     }
   } catch (error) {
     res.send({

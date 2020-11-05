@@ -19,7 +19,7 @@ router.get("/covid/country/name/:country_name",async(req,res)=>{
  .then(function (response) {
      if(!response.data[0])
      {
-        return  res.status(404).json({status:"404",message:"Record not found"})
+        return  res.status(404).json({status:404,message:"Record not found"})
      }
  else{
     // console.log(JSON.stringify(response.data));
@@ -58,7 +58,7 @@ router.get("/covid/country/name/:country_name",async(req,res)=>{
  .then(function (response) {
      if(!response.data[0])
      {
-        return  res.status(404).json({status:"404",message:"Record not found"})
+        return  res.status(404).json({status:404,message:"Record not found"})
      }
  else{
     // console.log(JSON.stringify(response.data));
@@ -121,7 +121,7 @@ router.get("/covid/country/name/:country_name",async(req,res)=>{
            })
            if(!response2.data[0])
            {
-            return  res.status(404).json({status:"404",message:"Record not found"})
+            return  res.status(404).json({status:404,message:"Record not found"})
            }
            if(response2.data){
             return res.json({country:response2.data[0].country,

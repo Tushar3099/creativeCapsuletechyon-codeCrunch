@@ -22,6 +22,10 @@ app.get('/',(req,res)=>{
     res.send("Hello!! Team 'Shweta' and 'Tushar' here. ")
 })
 
+app.get('*',(req,res)=>{
+  res.status(400).json({status:400,message:"Bad request"})
+})
+
 app.listen(PORT, () => {
   console.log("Server is listening!! " + PORT);
 });

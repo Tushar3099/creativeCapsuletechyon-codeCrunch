@@ -15,7 +15,7 @@ router.get("/country/name/:country_name",async(req,res)=>{
 .then(function (response) {
     if(!response.data[0])
     {
-        return  res.status(404).json({status:"404",message:"Record not found"})
+        return  res.status(404).json({status:404,message:"Record not found"})
     }
 //   console.log(JSON.stringify(response.data));
 else{
@@ -26,8 +26,8 @@ else{
         region:response.data[0].region,
         population:response.data[0].population,
         flag:response.data[0].flag,
-        totalLanguages:response.data[0].languages,
-        totalCurrencies:response.data[0].currencies
+        totalLanguages:response.data[0].languages.length,
+        totalCurrencies:response.data[0].currencies.length
       })
 }
  
@@ -35,7 +35,7 @@ else{
 .catch(function (error) {
 //    console.log(error);
 if(error.response.status==404)
-return  res.status(404).json({status:"404",message:"Record not found"})
+return  res.status(404).json({status:404,message:"Record not found"})
 else
  return res.status(400).json({status:"400",message:"Bad request"})
 });
@@ -55,7 +55,7 @@ router.get("/country/code/:country_code",async(req,res)=>{
  .then(function (response) {
      if(!response.data)
      {
-        return  res.status(404).json({status:"404",message:"Record not found"})
+        return  res.status(404).json({status:404,message:"Record not found"})
      }
    
  else{
@@ -67,9 +67,9 @@ router.get("/country/code/:country_code",async(req,res)=>{
          region:response.data.region,
          population:response.data.population,
          flag:response.data.flag,
-         totalLanguages:response.data.languages,
-         totalCurrencies:response.data.currencies,
-         totalTimezones:response.data.timezones
+         totalLanguages:response.data.languages.length,
+         totalCurrencies:response.data.currencies.length,
+         totalTimezones:response.data.timezones.length
        })
  }
   
@@ -77,7 +77,7 @@ router.get("/country/code/:country_code",async(req,res)=>{
  .catch(function (error) {
     // console.log(error);
     if(error.response.status==404)
-    return  res.status(404).json({status:"404",message:"Record not found"})
+    return  res.status(404).json({status:404,message:"Record not found"})
     else
      return res.status(400).json({status:"400",message:"Bad request"})
  });
@@ -88,7 +88,10 @@ router.get("/country/code/:country_code",async(req,res)=>{
 
 router.get('/country/search',async(req,res)=>{
     let search = req.query.searchText;
-    
+    if(!search)
+    {
+       return res.status(400).json({status:400,message:"Bad request"})
+    }
     try{
 
         const response=await axios({
@@ -100,17 +103,17 @@ router.get('/country/search',async(req,res)=>{
           })
           if(response.data)
           {
-            return res.json({name:response.data[0].name,
+            return res.json([{name:response.data[0].name,
                 alpha2Code:response.data[0].alpha2Code,
                 alpha3Code:response.data[0].alpha3Code,
                 capital:response.data[0].capital,
                 region:response.data[0].region,
                 population:response.data[0].population,
                 flag:response.data[0].flag,
-                totalLanguages:response.data[0].languages,
-                totalCurrencies:response.data[0].currencies,
-                totalTimezones:response.data[0].timezones
-              })
+                totalLanguages:response.data[0].languages.length,
+                totalCurrencies:response.data[0].currencies.length,
+                totalTimezones:response.data[0].timezones.length
+              }])
           }
          
         
@@ -126,17 +129,17 @@ router.get('/country/search',async(req,res)=>{
               })
               if(response3.data)
                 {
-                    return res.json({name:response3.data[0].name,
+                    return res.json([{name:response3.data[0].name,
                         alpha2Code:response3.data[0].alpha2Code,
                         alpha3Code:response3.data[0].alpha3Code,
                         capital:response3.data[0].capital,
                         region:response3.data[0].region,
                         population:response3.data[0].population,
                         flag:response3.data[0].flag,
-                        totalLanguages:response3.data[0].languages,
-                        totalCurrencies:response3.data[0].currencies,
-                        totalTimezones:response3.data[0].timezones
-                    })
+                        totalLanguages:response3.data[0].languages.length,
+                        totalCurrencies:response3.data[0].currencies.length,
+                        totalTimezones:response3.data[0].timezones.length
+                    }])
                 }
         }catch(err){
             try{
@@ -149,17 +152,17 @@ router.get('/country/search',async(req,res)=>{
                   })
                   if(response2.data)
                   {
-                    return res.json({name:response2.data.name,
+                    return res.json([{name:response2.data.name,
                         alpha2Code:response2.data.alpha2Code,
                         alpha3Code:response2.data.alpha3Code,
                         capital:response2.data.capital,
                         region:response2.data.region,
                         population:response2.data.population,
                         flag:response2.data.flag,
-                        totalLanguages:response2.data.languages,
-                        totalCurrencies:response2.data.currencies,
-                        totalTimezones:response2.data.timezones
-                      })
+                        totalLanguages:response2.data.languages.length,
+                        totalCurrencies:response2.data.currencies.length,
+                        totalTimezones:response2.data.timezones.length
+                      }])
                   }
             }catch(err){
                 try{
@@ -172,22 +175,22 @@ router.get('/country/search',async(req,res)=>{
                       })
                       if(response4.data)
                         {
-                            return res.json({name:response4.data[0].name,
+                            return res.json([{name:response4.data[0].name,
                                 alpha2Code:response4.data[0].alpha2Code,
                                 alpha3Code:response4.data[0].alpha3Code,
                                 capital:response4.data[0].capital,
                                 region:response4.data[0].region,
                                 population:response4.data[0].population,
                                 flag:response4.data[0].flag,
-                                totalLanguages:response4.data[0].languages,
-                                totalCurrencies:response4.data[0].currencies,
-                                totalTimezones:response4.data[0].timezones
-                            })
+                                totalLanguages:response4.data[0].languages.length,
+                                totalCurrencies:response4.data[0].currencies.length,
+                                totalTimezones:response4.data[0].timezones.length
+                            }])
                         }
                 }catch(error){
                     // console.log(error);
                     if(error.response.status==404)
-                    return  res.status(404).json({status:"404",message:"Record not found"})
+                    return  res.status(404).json({status:404,message:"Record not found"})
                     else
                      return res.status(400).json({status:"400",message:"Bad request"})
                 }

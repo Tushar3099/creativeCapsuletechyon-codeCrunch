@@ -88,7 +88,10 @@ router.get("/country/code/:country_code",async(req,res)=>{
 
 router.get('/country/search',async(req,res)=>{
     let search = req.query.searchText;
-    
+    if(!search)
+    {
+       return res.status(400).json({status:400,message:"Bad request"})
+    }
     try{
 
         const response=await axios({

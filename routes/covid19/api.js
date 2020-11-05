@@ -84,6 +84,10 @@ router.get("/covid/country/name/:country_name",async(req,res)=>{
 
  router.get('/covid/country/search',async(req,res)=>{
     let search = req.query.searchText;
+    if(!search)
+    {
+       return res.status(400).json({status:400,message:"Bad request"})
+    }
     try{
         const agent = new https.Agent({  
             rejectUnauthorized: false
